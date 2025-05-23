@@ -1,17 +1,37 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('nats.ws')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'nats.ws'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.NATS = {}, global.nats));
-})(this, (function (exports, nats_ws) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('nats.ws')) :
+    typeof define === 'function' && define.amd ? define(['nats.ws'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.NATS = factory(global.nats));
+})(this, (function (nats) { 'use strict';
 
-	Object.keys(nats_ws).forEach(function (k) {
-		if (k !== 'default' && !exports.hasOwnProperty(k)) Object.defineProperty(exports, k, {
-			enumerable: true,
-			get: function () { return nats_ws[k]; }
-		});
-	});
+    function _interopNamespace(e) {
+        if (e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (e) {
+            Object.keys(e).forEach(function (k) {
+                if (k !== 'default') {
+                    var d = Object.getOwnPropertyDescriptor(e, k);
+                    Object.defineProperty(n, k, d.get ? d : {
+                        enumerable: true,
+                        get: function () { return e[k]; }
+                    });
+                }
+            });
+        }
+        n["default"] = e;
+        return Object.freeze(n);
+    }
 
-	Object.defineProperty(exports, '__esModule', { value: true });
+    var nats__namespace = /*#__PURE__*/_interopNamespace(nats);
+
+    // Explicitly assign to window/global for UMD usage
+    // @ts-ignore
+    if (typeof window !== 'undefined') {
+        // @ts-ignore
+        window.NATS = nats__namespace;
+    }
+
+    return nats__namespace;
 
 }));
 //# sourceMappingURL=nats.js.map
