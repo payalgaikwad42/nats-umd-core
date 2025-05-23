@@ -24,10 +24,8 @@
 
     var nats__namespace = /*#__PURE__*/_interopNamespace(nats);
 
-    // Explicitly assign to window/global for UMD usage
-    // @ts-ignore
+    // Explicitly expose to global scope for UMD consumers like Tulip
     if (typeof window !== 'undefined') {
-        // @ts-ignore
         window.NATS = nats__namespace;
     }
 
