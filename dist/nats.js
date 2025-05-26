@@ -1,8 +1,7 @@
-(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+(function (factory) {
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.NATS = factory());
-})(this, (function () { 'use strict';
+    factory();
+})((function () { 'use strict';
 
     // deno-fmt-ignore-file
     // deno-lint-ignore-file
@@ -12040,8 +12039,7 @@
     if (typeof window !== 'undefined') {
         window.NATS = nats;
     }
-
-    return nats;
+    //rt default nats;
 
 }));
 //# sourceMappingURL=nats.js.map
