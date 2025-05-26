@@ -22,7 +22,7 @@ declare global {
 }
 // Export to global for Tulip
 if (typeof window !== 'undefined') {
-  (window as any).NATS = nats;
+  (window as any).NATS = { connect, StringCodec, JSONCodec, headers, credsAuthenticator };
 }
 
 //rt default nats;

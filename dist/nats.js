@@ -12028,16 +12028,9 @@
         return NatsConnectionImpl.connect(opts);
     }
 
-    var nats = {
-        connect: connect,
-        StringCodec: StringCodec,
-        JSONCodec: JSONCodec,
-        headers: headers,
-        credsAuthenticator: credsAuthenticator,
-    };
     // Export to global for Tulip
     if (typeof window !== 'undefined') {
-        window.NATS = nats;
+        window.NATS = { connect: connect, StringCodec: StringCodec, JSONCodec: JSONCodec, headers: headers, credsAuthenticator: credsAuthenticator };
     }
     //rt default nats;
 
