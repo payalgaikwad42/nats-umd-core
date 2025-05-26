@@ -6,6 +6,7 @@ import terser from '@rollup/plugin-terser';
 
 export default {
   input: 'src/nats.ts',
+ external: [],
   output: [
     {
       file: 'dist/nats.js',
