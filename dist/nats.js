@@ -1,7 +1,8 @@
-(function (factory) {
-    typeof define === 'function' && define.amd ? define(factory) :
-    factory();
-})((function () { 'use strict';
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.NATS = {}));
+})(this, (function (exports) { 'use strict';
 
     // deno-fmt-ignore-file
     // deno-lint-ignore-file
@@ -12028,11 +12029,26 @@
         return NatsConnectionImpl.connect(opts);
     }
 
+    var nats = {
+        connect: connect,
+        StringCodec: StringCodec,
+        JSONCodec: JSONCodec,
+        headers: headers,
+        credsAuthenticator: credsAuthenticator,
+    };
     // Export to global for Tulip
     if (typeof window !== 'undefined') {
         window.NATS = { connect: connect, StringCodec: StringCodec, JSONCodec: JSONCodec, headers: headers, credsAuthenticator: credsAuthenticator };
     }
-    //rt default nats;
+
+    exports.JSONCodec = JSONCodec;
+    exports.StringCodec = StringCodec;
+    exports.connect = connect;
+    exports.credsAuthenticator = credsAuthenticator;
+    exports["default"] = nats;
+    exports.headers = headers;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 //# sourceMappingURL=nats.js.map

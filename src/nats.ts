@@ -25,4 +25,7 @@ if (typeof window !== 'undefined') {
   (window as any).NATS = { connect, StringCodec, JSONCodec, headers, credsAuthenticator };
 }
 
-//rt default nats;
+export { connect, StringCodec, JSONCodec, headers, credsAuthenticator };
+
+export default nats;
+
